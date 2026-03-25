@@ -63,6 +63,25 @@ export const useAuthStore = create<AuthState>()(
           set({ user: { ...user, is2FAEnabled: false, twoFAMethod: null } });
         }
       },
+
+      updateProfile: (updates) => {
+        const user = get().user;
+        if (user) {
+          set({ user: { ...user, ...updates } });
+        }
+      },
+
+      changePassword: (oldPassword: string, newPassword: string) => {
+        const user = get().user;
+        if (!user) return { success: false, error: 'Not logged in' };
+        const cred = MOCK_CREDENTIALS[user.email];
+        if (!cred || cred.password !== oldPassword) {
+          return { success: false, error: 'Current password is incorrect' };
+        }
+        // Update mock credential
+        MOCK_CREDENTIALS[user.email].password = newPassword;
+        return { success: true };
+      },
     }),
     {
       name: 'gpu-cloud-auth',
@@ -111,6 +130,27 @@ export const useBranchStore = create<BranchState>((set) => ({
     branches: s.branches.map(b =>
       b.id === id ? { ...b, status: b.status === 'inactive' ? 'active' : 'inactive' } : b
     ),
+  })),
+}));
+
+// Seat store
+import { Seat, MOCK_SEATS } from './mock-data';
+
+interface SeatState {
+  seats: Seat[];
+  getSeatsByBranch: (branchId: string) => Seat[];
+  updateSeatStatus: (seatId: string, status: Seat['status']) => void;
+  updateSeat: (seatId: string, updates: Partial<Seat>) => void;
+}
+
+export const useSeatStore = create<SeatState>((set, get) => ({
+  seats: [...MOCK_SEATS],
+  getSeatsByBranch: (branchId: string) => get().seats.filter(s => s.branchId === branchId),
+  updateSeatStatus: (seatId, status) => set((s) => ({
+    seats: s.seats.map(seat => seat.id === seatId ? { ...seat, status, ...(status !== 'occupied' ? { playerName: undefined, startTime: undefined } : {}) } : seat),
+  })),
+  updateSeat: (seatId, updates) => set((s) => ({
+    seats: s.seats.map(seat => seat.id === seatId ? { ...seat, ...updates } : seat),
   })),
 }));
 
