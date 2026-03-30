@@ -84,10 +84,34 @@
 @layer base {
   * {
     @apply border-border;
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--muted-foreground) / 0.4) transparent;
   }
   body {
     @apply bg-background text-foreground font-sans antialiased;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Global Scrollbar Styles */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted-foreground) / 0.4);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground) / 0.7);
   }
 }
 
