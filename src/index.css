@@ -1,29 +1,28 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 @layer base {
   :root {
-    --background: 220 20% 97%;
+    --background: 40 40% 97%;
     --foreground: 222 47% 11%;
-    --card: 0 0% 100%;
+    --card: 40 45% 94%;
     --card-foreground: 222 47% 11%;
-    --popover: 0 0% 100%;
+    --popover: 40 45% 94%;
     --popover-foreground: 222 47% 11%;
     --primary: 234 89% 64%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 220 14% 96%;
+    --secondary: 210 5% 85%;
     --secondary-foreground: 222 47% 11%;
-    --muted: 220 14% 96%;
-    --muted-foreground: 220 9% 46%;
-    --accent: 220 14% 96%;
-    --accent-foreground: 222 47% 11%;
+    --muted: 210 5% 85%;
+    --muted-foreground: 215 10% 40%;
+    --accent: 234 89% 64% / 0.1;
+    --accent-foreground: 234 89% 64%;
     --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
+    --destructive-foreground: 210 12% 98%;
+    --border: 210 5% 80%;
+    --input: 210 5% 80%;
     --ring: 234 89% 64%;
     --radius: 0.625rem;
     --success: 152 69% 41%;
@@ -32,13 +31,13 @@
     --warning-foreground: 0 0% 100%;
     --info: 199 89% 48%;
     --info-foreground: 0 0% 100%;
-    --sidebar-background: 222 47% 11%;
-    --sidebar-foreground: 220 14% 80%;
+    --sidebar-background: 210 5% 88%;
+    --sidebar-foreground: 215 15% 30%;
     --sidebar-primary: 234 89% 64%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 222 40% 16%;
-    --sidebar-accent-foreground: 220 14% 90%;
-    --sidebar-border: 222 40% 18%;
+    --sidebar-accent: 210 5% 82%;
+    --sidebar-accent-foreground: 234 89% 64%;
+    --sidebar-border: 210 5% 80%;
     --sidebar-ring: 234 89% 64%;
     --gradient-start: 234 89% 64%;
     --gradient-end: 262 83% 58%;
@@ -84,10 +83,36 @@
 @layer base {
   * {
     @apply border-border;
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--muted-foreground) / 0.4) transparent;
   }
+
   body {
     @apply bg-background text-foreground font-sans antialiased;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Global Scrollbar Styles */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted-foreground) / 0.4);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground) / 0.7);
   }
 }
 
@@ -95,12 +120,14 @@
   .gradient-primary {
     background: linear-gradient(135deg, hsl(var(--gradient-start)), hsl(var(--gradient-end)));
   }
+
   .gradient-text {
     background: linear-gradient(135deg, hsl(var(--gradient-start)), hsl(var(--gradient-end)));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
+
   .glass {
     backdrop-filter: blur(12px);
     background: hsl(var(--card) / 0.8);

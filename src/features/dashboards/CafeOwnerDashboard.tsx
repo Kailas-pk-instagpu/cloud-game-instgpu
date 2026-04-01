@@ -67,15 +67,15 @@ export default function CafeOwnerDashboard() {
                 <AreaChart data={REVENUE_DATA}>
                   <defs>
                     <linearGradient id="ownerRevGrad" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="hsl(152, 69%, 41%)" stopOpacity={0.3} />
-                      <stop offset="95%" stopColor="hsl(152, 69%, 41%)" stopOpacity={0} />
+                      <stop offset="5%" stopColor="hsl(234, 89%, 64%)" stopOpacity={0.3} />
+                      <stop offset="95%" stopColor="hsl(234, 89%, 64%)" stopOpacity={0} />
                     </linearGradient>
                   </defs>
                   <CartesianGrid strokeDasharray="3 3" className="stroke-border" />
                   <XAxis dataKey="name" tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 12 }} />
                   <YAxis tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 12 }} tickFormatter={v => `$${v}`} />
                   <Tooltip contentStyle={{ background: 'hsl(var(--card))', border: '1px solid hsl(var(--border))', borderRadius: '8px' }} />
-                  <Area type="monotone" dataKey="revenue" stroke="hsl(152, 69%, 41%)" fill="url(#ownerRevGrad)" strokeWidth={2} />
+                  <Area type="monotone" dataKey="revenue" stroke="hsl(234, 89%, 64%)" fill="url(#ownerRevGrad)" strokeWidth={2} />
                 </AreaChart>
               </ResponsiveContainer>
             </div>
@@ -95,7 +95,7 @@ export default function CafeOwnerDashboard() {
                   <XAxis dataKey="hour" tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 11 }} />
                   <YAxis tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 11 }} />
                   <Tooltip contentStyle={{ background: 'hsl(var(--card))', border: '1px solid hsl(var(--border))', borderRadius: '8px' }} formatter={(v: number) => [`${v} customers`, 'Traffic']} />
-                  <Bar dataKey="customers" fill="hsl(var(--warning))" radius={[4, 4, 0, 0]} />
+                  <Bar dataKey="customers" fill="hsl(234, 89%, 64%)" radius={[4, 4, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
             </div>

@@ -87,7 +87,7 @@ export default function AdminDashboard() {
                   <XAxis type="number" tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 11 }} tickFormatter={v => `$${v/1000}k`} />
                   <YAxis type="category" dataKey="name" tick={{ fill: 'hsl(var(--muted-foreground))', fontSize: 11 }} width={70} />
                   <Tooltip contentStyle={{ background: 'hsl(var(--card))', border: '1px solid hsl(var(--border))', borderRadius: '8px' }} formatter={(v: number) => [`$${v.toLocaleString()}`, 'Revenue']} />
-                  <Bar dataKey="revenue" fill="hsl(var(--info))" radius={[0, 4, 4, 0]} />
+                  <Bar dataKey="revenue" fill="hsl(234, 89%, 64%)" radius={[0, 4, 4, 0]} />
                 </BarChart>
               </ResponsiveContainer>
             </div>
